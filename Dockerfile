@@ -1,4 +1,4 @@
-FROM finace/finace-0.0.1-SNAPSHOT:finace
+FROM finace/finace-0.0.1:finace
 VOLUME /tmp
 ADD finace-0.0.1-SNAPSHOT.jar app.jar
 #RUN bash -c 'touch /app.jar'
