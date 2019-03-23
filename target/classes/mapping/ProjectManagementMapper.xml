@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.investment.app.mapper.ProjectManagementMapper">
+  <resultMap id="BaseResultMap" type="com.investment.app.jdbcObject.ProjectManagementDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="month_earnings" jdbcType="INTEGER" property="monthEarnings" />
+    <result column="expected_risk_tolerance" jdbcType="INTEGER" property="expectedRiskTolerance" />
+    <result column="min_margin" jdbcType="DECIMAL" property="minMargin" />
+    <result column="money_proportion" jdbcType="VARCHAR" property="moneyProportion" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_updated" jdbcType="TIMESTAMP" property="gmtUpdated" />
+    <result column="is_online" jdbcType="INTEGER" property="isOnline" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, project_name, month_earnings, expected_risk_tolerance, min_margin, money_proportion, 
+    gmt_created, gmt_updated, is_online, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from project_management
+    where id = #{id,jdbcType=INTEGER}
+    and is_online =1
+    and deleted =0
+  </select>
+  <select id="selectAllPrimary" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from project_management
+    where is_online =1
+    and deleted =0
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from project_management
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.investment.app.jdbcObject.ProjectManagementDO">
+    insert into project_management (id, project_name, month_earnings, 
+      expected_risk_tolerance, min_margin, money_proportion, 
+      gmt_created, gmt_updated, is_online, 
+      deleted)
+    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{monthEarnings,jdbcType=INTEGER}, 
+      #{expectedRiskTolerance,jdbcType=INTEGER}, #{minMargin,jdbcType=DECIMAL}, #{moneyProportion,jdbcType=VARCHAR}, 
+      #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtUpdated,jdbcType=TIMESTAMP}, #{isOnline,jdbcType=INTEGER}, 
+      #{deleted,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.investment.app.jdbcObject.ProjectManagementDO">
+    insert into project_management
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="projectName != null">
+        project_name,
+      </if>
+      <if test="monthEarnings != null">
+        month_earnings,
+      </if>
+      <if test="expectedRiskTolerance != null">
+        expected_risk_tolerance,
+      </if>
+      <if test="minMargin != null">
+        min_margin,
+      </if>
+      <if test="moneyProportion != null">
+        money_proportion,
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created,
+      </if>
+      <if test="gmtUpdated != null">
+        gmt_updated,
+      </if>
+      <if test="isOnline != null">
+        is_online,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="monthEarnings != null">
+        #{monthEarnings,jdbcType=INTEGER},
+      </if>
+      <if test="expectedRiskTolerance != null">
+        #{expectedRiskTolerance,jdbcType=INTEGER},
+      </if>
+      <if test="minMargin != null">
+        #{minMargin,jdbcType=DECIMAL},
+      </if>
+      <if test="moneyProportion != null">
+        #{moneyProportion,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdated != null">
+        #{gmtUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isOnline != null">
+        #{isOnline,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.investment.app.jdbcObject.ProjectManagementDO">
+    update project_management
+    <set>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="monthEarnings != null">
+        month_earnings = #{monthEarnings,jdbcType=INTEGER},
+      </if>
+      <if test="expectedRiskTolerance != null">
+        expected_risk_tolerance = #{expectedRiskTolerance,jdbcType=INTEGER},
+      </if>
+      <if test="minMargin != null">
+        min_margin = #{minMargin,jdbcType=DECIMAL},
+      </if>
+      <if test="moneyProportion != null">
+        money_proportion = #{moneyProportion,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdated != null">
+        gmt_updated = #{gmtUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isOnline != null">
+        is_online = #{isOnline,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.investment.app.jdbcObject.ProjectManagementDO">
+    update project_management
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      month_earnings = #{monthEarnings,jdbcType=INTEGER},
+      expected_risk_tolerance = #{expectedRiskTolerance,jdbcType=INTEGER},
+      min_margin = #{minMargin,jdbcType=DECIMAL},
+      money_proportion = #{moneyProportion,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_updated = #{gmtUpdated,jdbcType=TIMESTAMP},
+      is_online = #{isOnline,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
