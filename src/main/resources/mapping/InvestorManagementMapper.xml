@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.investment.app.mapper.InvestorManagementMapper">
+  <resultMap id="BaseResultMap" type="com.investment.app.jdbcObject.InvestorManagementDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="tel_number" jdbcType="VARCHAR" property="telNumber" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="id_card_number" jdbcType="VARCHAR" property="idCardNumber" />
+    <result column="bank_card_number" jdbcType="VARCHAR" property="bankCardNumber" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_updated" jdbcType="TIMESTAMP" property="gmtUpdated" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
+    <result column="id_card_png_up" jdbcType="LONGVARCHAR" property="idCardPngUp" />
+    <result column="id_card_png_down" jdbcType="LONGVARCHAR" property="idCardPngDown" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tel_number, user_password, email, state, id_card_number, bank_card_number, gmt_created, 
+    gmt_updated, deleted
+  </sql>
+  <sql id="Blob_Column_List">
+    id_card_png_up, id_card_png_down
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from investor_management
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from investor_management
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
+    insert into investor_management (id, tel_number, user_password, 
+      email, state, id_card_number, 
+      bank_card_number, gmt_created, gmt_updated, 
+      deleted, id_card_png_up, id_card_png_down
+      )
+    values (#{id,jdbcType=INTEGER}, #{telNumber,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{idCardNumber,jdbcType=VARCHAR}, 
+      #{bankCardNumber,jdbcType=VARCHAR}, #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtUpdated,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{idCardPngUp,jdbcType=LONGVARCHAR}, #{idCardPngDown,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
+    insert into investor_management
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="telNumber != null">
+        tel_number,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="idCardNumber != null">
+        id_card_number,
+      </if>
+      <if test="bankCardNumber != null">
+        bank_card_number,
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created,
+      </if>
+      <if test="gmtUpdated != null">
+        gmt_updated,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="idCardPngUp != null">
+        id_card_png_up,
+      </if>
+      <if test="idCardPngDown != null">
+        id_card_png_down,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="telNumber != null">
+        #{telNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="idCardNumber != null">
+        #{idCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNumber != null">
+        #{bankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdated != null">
+        #{gmtUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="idCardPngUp != null">
+        #{idCardPngUp,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="idCardPngDown != null">
+        #{idCardPngDown,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
+    update investor_management
+    <set>
+      <if test="telNumber != null">
+        tel_number = #{telNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="idCardNumber != null">
+        id_card_number = #{idCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNumber != null">
+        bank_card_number = #{bankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdated != null">
+        gmt_updated = #{gmtUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="idCardPngUp != null">
+        id_card_png_up = #{idCardPngUp,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="idCardPngDown != null">
+        id_card_png_down = #{idCardPngDown,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
+    update investor_management
+    set tel_number = #{telNumber,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      id_card_number = #{idCardNumber,jdbcType=VARCHAR},
+      bank_card_number = #{bankCardNumber,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_updated = #{gmtUpdated,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      id_card_png_up = #{idCardPngUp,jdbcType=LONGVARCHAR},
+      id_card_png_down = #{idCardPngDown,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
+    update investor_management
+    set tel_number = #{telNumber,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      id_card_number = #{idCardNumber,jdbcType=VARCHAR},
+      bank_card_number = #{bankCardNumber,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_updated = #{gmtUpdated,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
