@@ -1,4 +1,4 @@
-FROM finace/finace-0.0.1:finace
+FROM frolvlad/alpine-oraclejdk8:slim
 VOLUME /tmp
 ADD finace-0.0.1-SNAPSHOT.jar app.jar
 #RUN bash -c 'touch /app.jar'
