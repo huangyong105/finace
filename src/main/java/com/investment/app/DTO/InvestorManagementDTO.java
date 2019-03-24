@@ -1,8 +1,12 @@
-package com.investment.app.jdbcObject;
+package com.investment.app.DTO;
 
 import java.util.Date;
 
-public class InvestorManagementDO {
+/**
+ * @author dongyuan
+ * @date 2019-03-24 15:22
+ **/
+public class InvestorManagementDTO {
     private Integer id;
 
     private String telNumber;

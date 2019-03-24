@@ -5,10 +5,14 @@ import java.util.Date;
 
 /**
  * @author dongyuan
- * @date 2019-03-22 14:22
+ * @date 2019-03-24 15:30
  **/
-public class ProjectManagementDTO {
+public class InvestmentDetailsDTO {
     private Integer id;
+
+    private Integer projectId;
+
+    private Integer investmenterId;
 
     private String projectName;
 
@@ -16,9 +20,13 @@ public class ProjectManagementDTO {
 
     private Integer expectedRiskTolerance;
 
-    private BigDecimal minMargin;
+    private BigDecimal inputMargin;
 
     private String moneyProportion;
+
+    private Date inputMarginTime;
+
+    private Integer state;
 
     private Date gmtCreated;
 
@@ -30,6 +38,22 @@ public class ProjectManagementDTO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    public Integer getInvestmenterId() {
+        return investmenterId;
+    }
+
+    public void setInvestmenterId(Integer investmenterId) {
+        this.investmenterId = investmenterId;
     }
 
     public String getProjectName() {
@@ -56,12 +80,12 @@ public class ProjectManagementDTO {
         this.expectedRiskTolerance = expectedRiskTolerance;
     }
 
-    public BigDecimal getMinMargin() {
-        return minMargin;
+    public BigDecimal getInputMargin() {
+        return inputMargin;
     }
 
-    public void setMinMargin(BigDecimal minMargin) {
-        this.minMargin = minMargin;
+    public void setInputMargin(BigDecimal inputMargin) {
+        this.inputMargin = inputMargin;
     }
 
     public String getMoneyProportion() {
@@ -70,6 +94,22 @@ public class ProjectManagementDTO {
 
     public void setMoneyProportion(String moneyProportion) {
         this.moneyProportion = moneyProportion;
+    }
+
+    public Date getInputMarginTime() {
+        return inputMarginTime;
+    }
+
+    public void setInputMarginTime(Date inputMarginTime) {
+        this.inputMarginTime = inputMarginTime;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public Date getGmtCreated() {
@@ -87,5 +127,4 @@ public class ProjectManagementDTO {
     public void setGmtUpdated(Date gmtUpdated) {
         this.gmtUpdated = gmtUpdated;
     }
-
 }

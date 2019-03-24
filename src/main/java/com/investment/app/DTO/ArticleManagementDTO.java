@@ -17,10 +17,6 @@ public class ArticleManagementDTO {
 
     private Date gmtUpdated;
 
-    private Integer isOnline;
-
-    private Integer deleted;
-
     private String articleDesc;
 
     public Integer getId() {
@@ -61,22 +57,6 @@ public class ArticleManagementDTO {
 
     public void setGmtUpdated(Date gmtUpdated) {
         this.gmtUpdated = gmtUpdated;
-    }
-
-    public Integer getIsOnline() {
-        return isOnline;
-    }
-
-    public void setIsOnline(Integer isOnline) {
-        this.isOnline = isOnline;
-    }
-
-    public Integer getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(Integer deleted) {
-        this.deleted = deleted;
     }
 
     public String getArticleDesc() {

@@ -1,22 +1,18 @@
 package com.investment.app.mapper;
 
 
-import com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO;
-import org.springframework.stereotype.Repository;
+import com.investment.app.jdbcObject.InvestorManagementDO;
 
-@Repository
 public interface InvestorManagementMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(InvestorManagementWithBLOBsDO record);
+    int insert(InvestorManagementDO record);
 
-    int insertSelective(InvestorManagementWithBLOBsDO record);
+    int insertSelective(InvestorManagementDO record);
 
-    InvestorManagementWithBLOBsDO selectByPrimaryKey(Integer id);
+    InvestorManagementDO selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(InvestorManagementWithBLOBsDO record);
+    int updateByPrimaryKeySelective(InvestorManagementDO record);
 
-    int updateByPrimaryKeyWithBLOBs(InvestorManagementWithBLOBsDO record);
-
-    int updateByPrimaryKey(InvestorManagementWithBLOBsDO record);
+    int updateByPrimaryKey(InvestorManagementDO record);
 }
