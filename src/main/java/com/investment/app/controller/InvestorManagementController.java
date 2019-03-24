@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2019-03-23 15:10
  **/
 @RestController
-@RequestMapping("/Investor")
+@RequestMapping("/investor")
 public class InvestorManagementController {
 
     /**
@@ -43,8 +43,8 @@ public class InvestorManagementController {
         InvestmentDetailsDTO investmentDetailsDTO = new InvestmentDetailsDTO();
         investmentDetailsDTO.setId(1);
         investmentDetailsDTO.setExpectedRiskTolerance(2);
-        BigDecimal bigDecimal = new BigDecimal(123.21);
-        investmentDetailsDTO.setInputMargin(bigDecimal);
+        BigDecimal amount = BigDecimal.valueOf(213.12);
+        investmentDetailsDTO.setInputMargin(amount);
         investmentDetailsDTO.setState(1);
         investmentDetailsDTOS.add(investmentDetailsDTO);
         return Result.ofSuccess(investmentDetailsDTOS);
