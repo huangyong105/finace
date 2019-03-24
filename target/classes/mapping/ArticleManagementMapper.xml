@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.investment.app.mapper.ArticleManagementMapper">
+  <resultMap id="BaseResultMap" type="com.investment.app.jdbcObject.ArticleManagementDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="article_name" jdbcType="VARCHAR" property="articleName" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_updated" jdbcType="TIMESTAMP" property="gmtUpdated" />
+    <result column="is_online" jdbcType="INTEGER" property="isOnline" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.investment.app.jdbcObject.ArticleManagementDO">
+    <result column="article_desc" jdbcType="LONGVARCHAR" property="articleDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, article_name,article_desc,link, gmt_created, gmt_updated, is_online, deleted
+  </sql>
+  <sql id="Blob_Column_List">
+    article_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />,<include refid="Blob_Column_List"/>
+    from article_management
+    where id = #{id,jdbcType=INTEGER}
+    and where is_online = 1
+    and deleted = 0
+  </select>
+  <select id="selectAllArticle" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />,<include refid="Blob_Column_List"/>
+    from article_management
+    where is_online = 1
+    and deleted = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from article_management
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.investment.app.jdbcObject.ArticleManagementDO">
+    insert into article_management (id, article_name, link, 
+      gmt_created, gmt_updated, is_online, 
+      deleted, article_desc)
+    values (#{id,jdbcType=INTEGER}, #{articleName,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, 
+      #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtUpdated,jdbcType=TIMESTAMP}, #{isOnline,jdbcType=INTEGER}, 
+      #{deleted,jdbcType=INTEGER}, #{articleDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.investment.app.jdbcObject.ArticleManagementDO">
+    insert into article_management
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="articleName != null">
+        article_name,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created,
+      </if>
+      <if test="gmtUpdated != null">
+        gmt_updated,
+      </if>
+      <if test="isOnline != null">
+        is_online,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="articleDesc != null">
+        article_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="articleName != null">
+        #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdated != null">
+        #{gmtUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isOnline != null">
+        #{isOnline,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="articleDesc != null">
+        #{articleDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.investment.app.jdbcObject.ArticleManagementDO">
+    update article_management
+    <set>
+      <if test="articleName != null">
+        article_name = #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdated != null">
+        gmt_updated = #{gmtUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isOnline != null">
+        is_online = #{isOnline,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="articleDesc != null">
+        article_desc = #{articleDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.investment.app.jdbcObject.ArticleManagementDO">
+    update article_management
+    set article_name = #{articleName,jdbcType=VARCHAR},
+      link = #{link,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_updated = #{gmtUpdated,jdbcType=TIMESTAMP},
+      is_online = #{isOnline,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER},
+      article_desc = #{articleDesc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.investment.app.jdbcObject.ArticleManagementDO">
+    update article_management
+    set article_name = #{articleName,jdbcType=VARCHAR},
+      link = #{link,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_updated = #{gmtUpdated,jdbcType=TIMESTAMP},
+      is_online = #{isOnline,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
