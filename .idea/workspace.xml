@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5abef4d3-6201-4064-9f9e-bc4eba1d7a87" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/investment/app/DTO/InvestmentDetailsDTO.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/investment/app/DTO/InvestorManagementDTO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/investment/app/DTO/ArticleManagementDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/investment/app/DTO/ArticleManagementDTO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/investment/app/DTO/ProjectManagementDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/investment/app/DTO/ProjectManagementDTO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/investment/app/controller/InvestorManagementController.java" afterPath="$PROJECT_DIR$/src/main/java/com/investment/app/controller/InvestorManagementController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/investment/app/jdbcObject/InvestorManagementDO.java" afterPath="$PROJECT_DIR$/src/main/java/com/investment/app/jdbcObject/InvestorManagementDO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/investment/app/jdbcObject/InvestorManagementWithBLOBsDO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/investment/app/mapper/InvestorManagementMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/investment/app/mapper/InvestorManagementMapper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/InvestorManagementMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapping/InvestorManagementMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
