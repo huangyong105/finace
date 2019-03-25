@@ -9,10 +9,16 @@
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="id_card_number" jdbcType="VARCHAR" property="idCardNumber" />
     <result column="bank_card_number" jdbcType="VARCHAR" property="bankCardNumber" />
+<<<<<<< HEAD
+=======
+    <result column="id_card_png_up" jdbcType="VARCHAR" property="idCardPngUp" />
+    <result column="id_card_png_down" jdbcType="VARCHAR" property="idCardPngDown" />
+>>>>>>> dev
     <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
     <result column="gmt_updated" jdbcType="TIMESTAMP" property="gmtUpdated" />
     <result column="deleted" jdbcType="INTEGER" property="deleted" />
   </resultMap>
+<<<<<<< HEAD
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
     <result column="id_card_png_up" jdbcType="LONGVARCHAR" property="idCardPngUp" />
     <result column="id_card_png_down" jdbcType="LONGVARCHAR" property="idCardPngDown" />
@@ -29,6 +35,15 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
+=======
+  <sql id="Base_Column_List">
+    id, tel_number, user_password, email, state, id_card_number, bank_card_number, id_card_png_up, 
+    id_card_png_down, gmt_created, gmt_updated, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+>>>>>>> dev
     from investor_management
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -36,6 +51,7 @@
     delete from investor_management
     where id = #{id,jdbcType=INTEGER}
   </delete>
+<<<<<<< HEAD
   <insert id="insert" parameterType="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
     insert into investor_management (id, tel_number, user_password, 
       email, state, id_card_number, 
@@ -49,6 +65,21 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
+=======
+  <insert id="insert" parameterType="com.investment.app.jdbcObject.InvestorManagementDO">
+    insert into investor_management (id, tel_number, user_password, 
+      email, state, id_card_number, 
+      bank_card_number, id_card_png_up, id_card_png_down, 
+      gmt_created, gmt_updated, deleted
+      )
+    values (#{id,jdbcType=INTEGER}, #{telNumber,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{idCardNumber,jdbcType=VARCHAR}, 
+      #{bankCardNumber,jdbcType=VARCHAR}, #{idCardPngUp,jdbcType=VARCHAR}, #{idCardPngDown,jdbcType=VARCHAR}, 
+      #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtUpdated,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.investment.app.jdbcObject.InvestorManagementDO">
+>>>>>>> dev
     insert into investor_management
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -72,6 +103,15 @@
       <if test="bankCardNumber != null">
         bank_card_number,
       </if>
+<<<<<<< HEAD
+=======
+      <if test="idCardPngUp != null">
+        id_card_png_up,
+      </if>
+      <if test="idCardPngDown != null">
+        id_card_png_down,
+      </if>
+>>>>>>> dev
       <if test="gmtCreated != null">
         gmt_created,
       </if>
@@ -81,12 +121,15 @@
       <if test="deleted != null">
         deleted,
       </if>
+<<<<<<< HEAD
       <if test="idCardPngUp != null">
         id_card_png_up,
       </if>
       <if test="idCardPngDown != null">
         id_card_png_down,
       </if>
+=======
+>>>>>>> dev
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -110,6 +153,15 @@
       <if test="bankCardNumber != null">
         #{bankCardNumber,jdbcType=VARCHAR},
       </if>
+<<<<<<< HEAD
+=======
+      <if test="idCardPngUp != null">
+        #{idCardPngUp,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardPngDown != null">
+        #{idCardPngDown,jdbcType=VARCHAR},
+      </if>
+>>>>>>> dev
       <if test="gmtCreated != null">
         #{gmtCreated,jdbcType=TIMESTAMP},
       </if>
@@ -119,6 +171,7 @@
       <if test="deleted != null">
         #{deleted,jdbcType=INTEGER},
       </if>
+<<<<<<< HEAD
       <if test="idCardPngUp != null">
         #{idCardPngUp,jdbcType=LONGVARCHAR},
       </if>
@@ -128,6 +181,11 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
+=======
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.investment.app.jdbcObject.InvestorManagementDO">
+>>>>>>> dev
     update investor_management
     <set>
       <if test="telNumber != null">
@@ -148,6 +206,15 @@
       <if test="bankCardNumber != null">
         bank_card_number = #{bankCardNumber,jdbcType=VARCHAR},
       </if>
+<<<<<<< HEAD
+=======
+      <if test="idCardPngUp != null">
+        id_card_png_up = #{idCardPngUp,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardPngDown != null">
+        id_card_png_down = #{idCardPngDown,jdbcType=VARCHAR},
+      </if>
+>>>>>>> dev
       <if test="gmtCreated != null">
         gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
       </if>
@@ -157,6 +224,7 @@
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=INTEGER},
       </if>
+<<<<<<< HEAD
       <if test="idCardPngUp != null">
         id_card_png_up = #{idCardPngUp,jdbcType=LONGVARCHAR},
       </if>
@@ -182,6 +250,12 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.investment.app.jdbcObject.InvestorManagementWithBLOBsDO">
+=======
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.investment.app.jdbcObject.InvestorManagementDO">
+>>>>>>> dev
     update investor_management
     set tel_number = #{telNumber,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},
@@ -189,6 +263,11 @@
       state = #{state,jdbcType=INTEGER},
       id_card_number = #{idCardNumber,jdbcType=VARCHAR},
       bank_card_number = #{bankCardNumber,jdbcType=VARCHAR},
+<<<<<<< HEAD
+=======
+      id_card_png_up = #{idCardPngUp,jdbcType=VARCHAR},
+      id_card_png_down = #{idCardPngDown,jdbcType=VARCHAR},
+>>>>>>> dev
       gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
       gmt_updated = #{gmtUpdated,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=INTEGER}
